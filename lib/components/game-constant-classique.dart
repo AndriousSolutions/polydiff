@@ -38,6 +38,8 @@ class GameConstantsClassique extends StatefulWidget {
 
 class _GameConstantsClassiqueState extends State<GameConstantsClassique> {
   int initialTime = Consts.DEFAULT_INITIAL_TIME;
+  var penalty = Consts.DEFAULT_PENALTY;
+  var timeWon = Consts.DEFAULT_TIME_WON;
   late bool cheatMode = Consts.DEFAULT_CHEAT_MODE;
 
   String username = '';
@@ -64,6 +66,8 @@ class _GameConstantsClassiqueState extends State<GameConstantsClassique> {
   void setConstants() async {
     Constants constants = Constants(
       initialTime: initialTime,
+      penalty: penalty,
+      timeWon: timeWon,
       cheatMode: cheatMode,
     );
     await gameConstantsService.setConstants(constants);
@@ -83,7 +87,9 @@ class _GameConstantsClassiqueState extends State<GameConstantsClassique> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => WaitingPageWidget(img1: _imageTransfer.img1!, img2: widget.img2), // change to waiting page
+        builder: (context) => WaitingPageWidget(
+            img1: _imageTransfer.img1!,
+            img2: widget.img2), // change to waiting page
       ),
     );
   }
