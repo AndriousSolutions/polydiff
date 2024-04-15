@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:polydiff/interfaces/game-access-type.dart';
-import 'package:polydiff/services/http-request-tool.dart';
+import 'package:polydiff/interfaces/game_access_type.dart';
+import 'package:polydiff/services/http_request_tool.dart';
 import 'package:polydiff/services/user.dart';
 
 class FriendsService {
@@ -37,24 +37,29 @@ class FriendsService {
         receivedFriendRequests = [];
       } else {
         receivedFriendRequests = (body['receivedRequests'] as List<dynamic>)
-            .map((id) => id.toString()).toList();
+            .map((id) => id.toString())
+            .toList();
       }
       if (body['submittedRequests'] == null) {
         submittedFriendRequests = [];
       } else {
         submittedFriendRequests = (body['submittedRequests'] as List<dynamic>)
-            .map((id) => id.toString()).toList();
+            .map((id) => id.toString())
+            .toList();
       }
     }
   }
+
   static void fetchFriendsOfSelectedUser(String id) async {
     var res = await HttpRequestTool.basicGet('friends/$id');
     if (res.statusCode != 200) {
       friendsOfSelectedUser = [];
     } else {
-      friendsOfSelectedUser = (jsonDecode(res.body) as List<dynamic>).cast<String>();
+      friendsOfSelectedUser =
+          (jsonDecode(res.body) as List<dynamic>).cast<String>();
     }
   }
+
   static Future<bool> isUserAllowedInGame(dynamic game) async {
     if (game['gameAccessType'] == GameAccessType.FRIENDS_ONLY.index) {
       String gameCreatorUserName = game['players'][0]['name'];

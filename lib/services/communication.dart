@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
-import 'game-card-template.dart';
-import 'game-classes.dart';
+import 'game_card_template.dart';
+import 'game_classes.dart';
 
 class CommunicationService {
   final String baseUrl = '${dotenv.env['SERVER_URL_AND_PORT']}api';

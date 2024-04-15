@@ -1,5 +1,5 @@
 class Consts {
-  static const FILE_SYSTEM = "fs";
+  static const FILE_SYSTEM = 'fs';
   static const EMPTY_ID = '';
 
   static const HTTP_STATUS_OK = 200;

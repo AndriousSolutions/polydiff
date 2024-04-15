@@ -7,10 +7,10 @@ class ChronometerWidget extends StatefulWidget {
   final Function(bool) onTimeUp;
 
   const ChronometerWidget({
-    Key? key,
+    super.key,
     this.penalty = 30,
     required this.onTimeUp,
-  }) : super(key: key);
+  });
 
   @override
   ChronometerWidgetState createState() => ChronometerWidgetState();
@@ -92,11 +92,9 @@ class ChronometerWidgetState extends State<ChronometerWidget> {
   Widget build(BuildContext context) {
     int minutes = _seconds ~/ 60;
     int remainingSeconds = _seconds % 60;
-    return Container(
-      child: Text(
-        '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}',
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-      ),
+    return Text(
+      '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}',
+      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
     );
   }
 }

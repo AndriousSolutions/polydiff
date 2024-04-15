@@ -1,4 +1,9 @@
 
+## 0.0.3
+April 14, 2024
+- Rename the Dart files with underscores and not dashes
+- Single quotes from unnecessarily double quotes
+
 ## 0.0.2
 April 14, 2024
 - game-constant-classique.dart:

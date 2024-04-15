@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
-import 'package:polydiff/pages/picture-confirmation-page.dart';
+import 'package:polydiff/pages/picture_confirmation_page.dart';
 import 'package:polydiff/services/camera.dart';
 import 'package:polydiff/services/language.dart';
 
@@ -28,19 +28,20 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     );
     _initializeControllerFuture = _controller.initialize();
   }
+
   @override
   void dispose() {
     _controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(
-          LanguageService().translate(
+        appBar: AppBar(
+          title: Text(LanguageService().translate(
               frenchString: 'Prenez une photo pour votre avatar',
-              englishString: 'Take a picture for your avatar'
-          )),
+              englishString: 'Take a picture for your avatar')),
         ),
         body: FutureBuilder<void>(
           future: _initializeControllerFuture,

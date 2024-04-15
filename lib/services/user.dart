@@ -3,14 +3,15 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:polydiff/components/user-avatar.dart';
-import 'package:polydiff/services/http-request-tool.dart';
-import 'package:polydiff/services/image-from-server.dart';
+import 'package:polydiff/components/user_avatar.dart';
+import 'package:polydiff/services/http_request_tool.dart';
+import 'package:polydiff/services/image_from_server.dart';
 
 class User {
   static String username = '';
   static late String id;
-  static final StreamController<String> _usernameController = StreamController<String>.broadcast();
+  static final StreamController<String> _usernameController =
+      StreamController<String>.broadcast();
   static late String avatarFileName;
   static int dinarsAmount = 0;
   static late Container avatar;
@@ -44,7 +45,7 @@ class User {
     await loadGameHistory();
   }
 
-  // This refreshed the users avatar from server information.  
+  // This refreshed the users avatar from server information.
   static setAvatar(String avatarFileName) {
     User.avatarFileName = avatarFileName;
     User.avatar = AvatarImageFromServer.getAvatar(avatarFileName);
@@ -67,7 +68,8 @@ class User {
   }
 
   static loadConnectionHistory() async {
-    var res = await HttpRequestTool.basicGet('api/fs/players/$username/connection-history');
+    var res = await HttpRequestTool.basicGet(
+        'api/fs/players/$username/connection-history');
     connectionHistory = [];
     if (res.statusCode == 200) {
       for (var entry in jsonDecode(res.body)['connectionHistory']) {
@@ -90,20 +92,20 @@ class User {
           date: DateTime.parse(entry['date']),
           wonGame: entry['wonGame'],
         ));
-      }   
+      }
       totalPlayedGames = gameHistory.length;
       totalWonGames = gameHistory.where((game) => game.wonGame == true).length;
-        
+
       res = await HttpRequestTool.basicGet('api/fs/players/$username/averages');
       if (res.statusCode == 200) {
         var avgDiff = jsonDecode(res.body)['averageDifferencePerGame'];
         var avgTime = jsonDecode(res.body)['averageTimePerGame'];
-        avgFoundDifferencePerGame = avgDiff is double ? avgDiff.toInt() : avgDiff;
+        avgFoundDifferencePerGame =
+            avgDiff is double ? avgDiff.toInt() : avgDiff;
         avgGameDuration = avgTime is double ? avgTime.toInt() : avgTime;
       }
     }
   }
-
 }
 
 class ConnectionHistoryEntry {

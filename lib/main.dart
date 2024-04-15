@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:polydiff/pages/home-page.dart';
+import 'package:polydiff/pages/home_page.dart';
 import 'package:polydiff/services/camera.dart';
-import 'package:polydiff/services/image-from-server.dart';
+import 'package:polydiff/services/image_from_server.dart';
 import 'package:polydiff/services/language.dart';
 import 'package:polydiff/services/localNotificationService.dart';
 import 'package:polydiff/services/socket.dart';
@@ -26,9 +26,7 @@ Future main() async {
       .then((_) {
     runApp(
       ChangeNotifierProvider(
-        create: (context) => AvatarProvider(),
-        child: App()
-      ),
+          create: (context) => AvatarProvider(), child: App()),
     );
   });
 }
@@ -44,7 +42,9 @@ class App extends StatelessWidget {
           builder: (context, appState, child) => Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(appState.themeService.isThemeDark ? 'assets/images/background.png' : 'assets/images/background_light.png'),
+                image: AssetImage(appState.themeService.isThemeDark
+                    ? 'assets/images/background.png'
+                    : 'assets/images/background_light.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -63,7 +63,7 @@ class App extends StatelessWidget {
               theme: ThemeData(
                 useMaterial3: true,
                 colorScheme: appState.themeService.currentColorScheme,
-                scaffoldBackgroundColor: Colors.transparent, 
+                scaffoldBackgroundColor: Colors.transparent,
               ),
               home: HomePage(),
             ),

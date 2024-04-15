@@ -19,7 +19,7 @@ class SocketService {
     });
     socket.onConnectError((err) => print(err));
     socket.onDisconnect((data) {
-        print('Disconnected socket. Reason: $data');
+      print('Disconnected socket. Reason: $data');
     });
 
     socket.onError((error) {
@@ -60,7 +60,7 @@ class SocketService {
   }
 
   void emit(String event, dynamic data) {
-    print('trying to emit ' + event + ' with data ' + data.toString());
+    print('trying to emit $event with data $data');
     socket.emit(event, data);
   }
 

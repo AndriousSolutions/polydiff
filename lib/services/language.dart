@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:polydiff/services/http-request-tool.dart';
+import 'package:polydiff/services/http_request_tool.dart';
 import 'package:polydiff/services/user.dart';
 
 class LanguageService extends ChangeNotifier {
@@ -22,7 +22,7 @@ class LanguageService extends ChangeNotifier {
   // Save current state to db
   saveLanguage() {
     HttpRequestTool.basicPatch('api/fs/players/${User.username}/language', {
-        'isLanguageFrench': isLanguageFrench,
+      'isLanguageFrench': isLanguageFrench,
     });
   }
 

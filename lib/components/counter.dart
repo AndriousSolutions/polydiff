@@ -32,13 +32,11 @@ class CounterState extends State<Counter> {
   @override
   Widget build(BuildContext context) {
     print('Counter build for ${widget.name}');
-    return Container(
-      child: Column(
-        children: [
-          Text('Nom du joueur: ${widget.name}'),
-          Text('Nombre de différences trouvés: ${widget.counter}'),
-        ],
-      ),
+    return Column(
+      children: [
+        Text('Nom du joueur: ${widget.name}'),
+        Text('Nombre de différences trouvés: ${widget.counter}'),
+      ],
     );
   }
 }
