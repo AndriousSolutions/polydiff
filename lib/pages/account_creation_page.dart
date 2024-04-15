@@ -31,14 +31,14 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
   _AccountCreationPageState() {
     _appBar = AppBar(
       title: Text(
-        LanguageService()
+        LanguageController()
             .translate(frenchString: 'Inscription', englishString: 'Sign up'),
       ),
     );
 
     pseudoForm = ValidatedCustomTextField(
       controller: pseudo,
-      labelText: LanguageService().translate(
+      labelText: LanguageController().translate(
           frenchString: 'Nom d\'utilisateur :', englishString: 'Username :'),
       obscureText: false,
       validator: (value) {
@@ -47,7 +47,7 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
             value.isEmpty ||
             value.length > 16 ||
             !regex.hasMatch(value)) {
-          return LanguageService().translate(
+          return LanguageController().translate(
               frenchString:
                   'Le pseudonyme doit contenir entre 1 et 16 lettres et/ou chiffres.',
               englishString:
@@ -65,7 +65,7 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
             value.length < 3 ||
             value.length > 254 ||
             !regex.hasMatch(value)) {
-          return LanguageService().translate(
+          return LanguageController().translate(
               frenchString: 'Le courriel n\'est pas valide',
               englishString: 'Email is not valid');
         }
@@ -82,7 +82,7 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
     });
     validateButton = ElevatedButton(
       child: Text(
-        LanguageService()
+        LanguageController()
             .translate(frenchString: 'S\'inscrire', englishString: 'Sign up'),
       ),
       onPressed: () async {
@@ -109,7 +109,7 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
     passwordForm1 = ValidatedCustomTextField(
       controller: password,
       obscureText: true,
-      labelText: LanguageService().translate(
+      labelText: LanguageController().translate(
           frenchString: 'Mot de passe :', englishString: 'Password :'),
       validator: (value) {
         RegExp regex = RegExp(r'^[a-zA-Z0-9]+$');
@@ -117,7 +117,7 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
             value.length < 5 ||
             value.length > 8 ||
             !regex.hasMatch(value)) {
-          return LanguageService().translate(
+          return LanguageController().translate(
               frenchString:
                   'Le mot de passe doit contenir seulement des lettres et des chiffres et contenir entre 5 et 8 caractères',
               englishString:
@@ -128,12 +128,12 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
     );
     passwordForm2 = ValidatedCustomTextField(
       obscureText: true,
-      labelText: LanguageService().translate(
+      labelText: LanguageController().translate(
           frenchString: 'Confirmer le mot de passe :',
           englishString: 'Confirm password :'),
       validator: (value) {
         if (value != password.text) {
-          return LanguageService().translate(
+          return LanguageController().translate(
               frenchString: 'Les mots de passe ne correspondent pas',
               englishString: 'Passwords do not match');
         }
@@ -201,7 +201,7 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
         builder: (context) {
           return AlertDialog(
             title: Text('⛔'),
-            content: Text(LanguageService().translate(
+            content: Text(LanguageController().translate(
                 frenchString: 'Le pseudonyme ou le courriel est déjà utilisé.',
                 englishString: 'Username or email already in use')),
             actions: <Widget>[

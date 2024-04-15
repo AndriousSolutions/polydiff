@@ -1,20 +1,22 @@
-import 'package:fluttery_framework/controller.dart';
+import 'package:flutter/material.dart';
 import 'package:polydiff/services/http_request_tool.dart';
 import 'package:polydiff/services/user.dart';
 
-class LanguageController extends StateXController {
-  factory LanguageController() => _this ??= LanguageController._();
-  LanguageController._();
-  static LanguageController? _this;
-
+class LanguageService extends ChangeNotifier {
+  static LanguageService instance = LanguageService._internal();
   bool isLanguageFrench = true;
   Locale currentLocale = Locale('fr', 'FR');
+  LanguageService._internal();
+
+  factory LanguageService() {
+    return instance;
+  }
 
   // changes current session display language
   setLanguage(bool isFrench) {
     isLanguageFrench = isFrench;
     currentLocale = isFrench ? Locale('fr', 'FR') : Locale('en', 'US');
-    setState(() {});
+    notifyListeners();
   }
 
   // Save current state to db

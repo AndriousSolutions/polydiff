@@ -8,6 +8,6 @@ class GameHistoryTable extends GenericHistoryTable {
             data: User.gameHistory.map((entry) {
               return MapEntry(entry.date, entry.wonGame == true ? '👑' : '❌');
             }).toList(),
-            dataLabel: LanguageService().translate(
+            dataLabel: LanguageController().translate(
                 frenchString: 'Partie gagnée', englishString: 'Game won'));
 }

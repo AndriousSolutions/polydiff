@@ -15,12 +15,12 @@ class DisplayPictureScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(LanguageService().translate(
+          title: Text(LanguageController().translate(
               frenchString: 'Confirmation de l\'avatar',
               englishString: 'Avatar confirmation')),
           actions: <Widget>[
             ElevatedButton(
-              child: Text(LanguageService().translate(
+              child: Text(LanguageController().translate(
                   frenchString: 'Téléverser', englishString: 'Upload')),
               onPressed: () {
                 UploadPictureService.uploadPicture(imagePath);
@@ -37,7 +37,7 @@ class DisplayPictureScreen extends StatelessWidget {
                         builder: (context) =>
                             (TakePictureScreen(refreshCustomAvatar))));
               },
-              child: Text(LanguageService().translate(
+              child: Text(LanguageController().translate(
                   frenchString: 'Reprendre la photo',
                   englishString: 'Retake the picture')),
             ),

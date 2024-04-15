@@ -96,7 +96,7 @@ class _GameConstantsScreenState extends State<GameConstantsScreen> {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-            LanguageService().translate(
+            LanguageController().translate(
               frenchString: 'Paramètres de la partie',
               englishString: 'Game settings',
             ),
@@ -105,7 +105,7 @@ class _GameConstantsScreenState extends State<GameConstantsScreen> {
             ElevatedButton(
               onPressed: setConstants,
               child: Text(
-                LanguageService().translate(
+                LanguageController().translate(
                   frenchString: 'Confirmer',
                   englishString: 'Confirm',
                 ),
@@ -119,7 +119,7 @@ class _GameConstantsScreenState extends State<GameConstantsScreen> {
           child: Column(
             children: [
               Text(
-                LanguageService().translate(
+                LanguageController().translate(
                   frenchString: 'Temps initial',
                   englishString: 'Initial time',
                 ),
@@ -137,7 +137,7 @@ class _GameConstantsScreenState extends State<GameConstantsScreen> {
                 },
               ),
               Text(
-                LanguageService().translate(
+                LanguageController().translate(
                   frenchString: 'Temps max plafond (secondes):',
                   englishString: 'Max time ceiling (seconds):',
                 ),
@@ -155,7 +155,7 @@ class _GameConstantsScreenState extends State<GameConstantsScreen> {
                 },
               ),
               Text(
-                LanguageService().translate(
+                LanguageController().translate(
                   frenchString:
                       'Temps ajouté par différence trouvée (secondes):',
                   englishString: 'Time added per difference found (seconds):',
@@ -175,7 +175,7 @@ class _GameConstantsScreenState extends State<GameConstantsScreen> {
               ),
               // Repeat for maxTime, timeWon, and other sliders.
               Text(
-                LanguageService().translate(
+                LanguageController().translate(
                   frenchString: 'Mode triche',
                   englishString: 'Cheat Mode',
                 ),

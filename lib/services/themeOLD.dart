@@ -1,12 +1,16 @@
-import 'package:fluttery_framework/controller.dart';
+import 'package:flutter/material.dart';
 import 'package:polydiff/services/http_request_tool.dart';
 import 'package:polydiff/services/user.dart';
 
-class ThemeController extends StateXController {
-  factory ThemeController() => _this ??= ThemeController._();
-  ThemeController._();
-  static ThemeController? _this;
+class ThemeService extends ChangeNotifier {
+  static ThemeService instance = ThemeService._internal();
   bool isThemeDark = true;
+
+  ThemeService._internal();
+
+  factory ThemeService() {
+    return instance;
+  }
 
   ColorScheme get currentColorScheme => isThemeDark
       ? ColorScheme.dark(
@@ -26,7 +30,7 @@ class ThemeController extends StateXController {
   setTheme(bool isDark) {
     isThemeDark = isDark;
     print('object');
-    setState(() {});
+    notifyListeners();
   }
 
   // Save current state to db

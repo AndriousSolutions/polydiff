@@ -124,11 +124,11 @@ class AvatarModificationState extends State<AvatarModification> {
                     print(e);
                   }
                 },
-          child: Text(LanguageService()
+          child: Text(LanguageController()
               .translate(frenchString: 'Confirmer', englishString: 'Confirm')),
         ),
         ElevatedButton(
-          child: Text(LanguageService().translate(
+          child: Text(LanguageController().translate(
               frenchString: 'Prendre une photo',
               englishString: 'Take a picture')),
           onPressed: () {

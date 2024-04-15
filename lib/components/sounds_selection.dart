@@ -102,7 +102,7 @@ class _SoundsSelectionState extends State<SoundsSelection> {
               children: [
                 SizedBox(height: 20), // Add distance
                 Text(
-                  LanguageService().translate(
+                  LanguageController().translate(
                     englishString: 'Sounds',
                     frenchString: 'Sons',
                   ),
@@ -115,7 +115,7 @@ class _SoundsSelectionState extends State<SoundsSelection> {
                 SizedBox(height: 20), // Add distance
 
                 Text(
-                  LanguageService().translate(
+                  LanguageController().translate(
                     englishString:
                         'Improve your gaming experience with these exclusive sounds!',
                     frenchString:
@@ -165,7 +165,7 @@ class _SoundsSelectionState extends State<SoundsSelection> {
                             ? ElevatedButton(
                                 onPressed: () => unUseSpecialSound(sound),
                                 child: Text(
-                                  LanguageService().translate(
+                                  LanguageController().translate(
                                     frenchString: 'Utiliser le son par défaut',
                                     englishString: 'Use the default sound',
                                   ),
@@ -175,7 +175,7 @@ class _SoundsSelectionState extends State<SoundsSelection> {
                             : ElevatedButton(
                                 onPressed: () => useSpecialSound(sound),
                                 child: Text(
-                                  LanguageService().translate(
+                                  LanguageController().translate(
                                     frenchString: 'Utiliser le son spécial',
                                     englishString: 'Use the special sound',
                                   ),

@@ -39,7 +39,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(LanguageService().translate(
+          title: Text(LanguageController().translate(
               frenchString: 'Prenez une photo pour votre avatar',
               englishString: 'Take a picture for your avatar')),
         ),

@@ -62,22 +62,22 @@ class UserFriendManagementState extends State<UserFriendManagement> {
                       },
                 child: (() {
                   if (FriendsService.friends.contains(widget.friend.id)) {
-                    return Text(LanguageService().translate(
+                    return Text(LanguageController().translate(
                         frenchString: 'Supprimer', englishString: 'Unfriend'));
                   } else if (FriendsService.submittedFriendRequests
                       .contains(widget.friend.id)) {
-                    return Text(LanguageService().translate(
+                    return Text(LanguageController().translate(
                         frenchString: 'Retirer la demande',
                         englishString: 'Cancel request'));
                   } else if (widget.friend.id == User.id) {
-                    return Text(LanguageService()
+                    return Text(LanguageController()
                         .translate(frenchString: 'Moi', englishString: 'Me'));
                   } else if (FriendsService.receivedFriendRequests
                       .contains(widget.friend.id)) {
-                    return Text(LanguageService().translate(
+                    return Text(LanguageController().translate(
                         frenchString: 'Accepter', englishString: 'Accept'));
                   } else {
-                    return Text(LanguageService().translate(
+                    return Text(LanguageController().translate(
                         frenchString: 'Ajouter', englishString: 'Add'));
                   }
                 }()),
@@ -93,7 +93,7 @@ class UserFriendManagementState extends State<UserFriendManagement> {
                         {'senderId': widget.friend.id});
                     widget.refreshFunction();
                   },
-                  child: Text(LanguageService().translate(
+                  child: Text(LanguageController().translate(
                       frenchString: 'Refuser', englishString: 'Reject')),
                 ),
               ),

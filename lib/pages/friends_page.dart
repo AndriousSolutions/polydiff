@@ -75,7 +75,7 @@ class FriendsPageState extends State<FriendsPage> {
             title: Row(children: [
               Expanded(
                   flex: 3,
-                  child: Text(LanguageService().translate(
+                  child: Text(LanguageController().translate(
                     frenchString: 'Gestion des amis',
                     englishString: 'Friends management',
                   ))),
@@ -91,7 +91,7 @@ class FriendsPageState extends State<FriendsPage> {
                     });
                   },
                   decoration: InputDecoration(
-                    hintText: LanguageService().translate(
+                    hintText: LanguageController().translate(
                         frenchString: 'Recherche d\'amis',
                         englishString: 'Friends Search'),
                     prefixIcon: IconButton(
@@ -117,7 +117,7 @@ class FriendsPageState extends State<FriendsPage> {
                     flex: 1,
                     child: Column(children: [
                       Text(
-                        LanguageService()
+                        LanguageController()
                             .translate(
                               frenchString: 'Tous les utilisateurs',
                               englishString: 'All users',
@@ -132,10 +132,11 @@ class FriendsPageState extends State<FriendsPage> {
                           itemBuilder: (context, index) {
                             return ListTile(
                               tileColor: null,
-                              selectedTileColor: ThemeService
-                                  .instance.currentColorScheme.secondary,
-                              selectedColor: ThemeService
-                                  .instance.currentColorScheme.primary,
+                              selectedTileColor: ThemeController()
+                                  .currentColorScheme
+                                  .secondary,
+                              selectedColor:
+                                  ThemeController().currentColorScheme.primary,
                               selected: selectedUser == index,
                               title: UserFriendManagement(
                                   displayedUsers[index].id, refresh),
@@ -150,7 +151,7 @@ class FriendsPageState extends State<FriendsPage> {
                     flex: 1,
                     child: Column(children: [
                       Text(
-                        LanguageService()
+                        LanguageController()
                             .translate(
                               frenchString: selectedUser != -1
                                   ? 'Amis de ${displayedUsers[selectedUser].username}'
@@ -166,7 +167,7 @@ class FriendsPageState extends State<FriendsPage> {
                       Expanded(
                         child: (FriendsService.friendsOfSelectedUser.isEmpty ||
                                 selectedUser == -1)
-                            ? Text(LanguageService().translate(
+                            ? Text(LanguageController().translate(
                                 frenchString: '(Aucun ami à afficher)',
                                 englishString: '(No friends to display)',
                               ))
@@ -190,7 +191,7 @@ class FriendsPageState extends State<FriendsPage> {
                     child: Column(
                       children: [
                         Text(
-                          LanguageService()
+                          LanguageController()
                               .translate(
                                 frenchString: 'Demandes d\'amitité reçues',
                                 englishString: 'Received friend requests',
@@ -201,7 +202,7 @@ class FriendsPageState extends State<FriendsPage> {
                         ),
                         Expanded(
                           child: FriendsService.receivedFriendRequests.isEmpty
-                              ? Text(LanguageService().translate(
+                              ? Text(LanguageController().translate(
                                   frenchString:
                                       '(Aucune demande d\'amitié à afficher)',
                                   englishString:

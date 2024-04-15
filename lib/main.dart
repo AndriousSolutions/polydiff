@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fluttery_framework/view.dart';
 import 'package:polydiff/pages/home_page.dart';
 import 'package:polydiff/services/camera.dart';
 import 'package:polydiff/services/image_from_server.dart';
@@ -11,8 +11,49 @@ import 'package:polydiff/services/socket.dart';
 import 'package:polydiff/services/theme.dart';
 import 'package:provider/provider.dart';
 
+void main() => runApp(App());
+
+class App extends AppStatefulWidget {
+  @override
+  AppState createAppState() => _AppState();
+}
+
+class _AppState extends AppState {
+  _AppState()
+      : super(
+          inInitAsync: () async {
+            // Toggle this line to switch between dev and prod
+//            await dotenv.load(fileName: 'env/.env.dev');
+            await dotenv.load(fileName: 'env/.env.prod');
+            await Camera.initialize();
+            await LocalNotificationService().init();
+            if (dotenv.isInitialized) {
+              SocketService.initSocket();
+            }
+            return dotenv.isInitialized;
+          },
+          controllers: [LanguageController(), ThemeController()],
+          locale: LanguageController().currentLocale,
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: [
+            const Locale('fr', 'FR'), // French
+          ],
+          title: 'PolyDiff',
+          theme: ThemeData(
+            useMaterial3: true,
+            colorScheme: ThemeController().currentColorScheme,
+            scaffoldBackgroundColor: Colors.transparent,
+          ),
+          home: HomePage(),
+        );
+}
+
 // modif test
-Future main() async {
+Future mainOLD() async {
   // Toggle this line to switch between dev and prod
   await dotenv.load(fileName: 'env/.env.prod');
 
@@ -26,19 +67,19 @@ Future main() async {
       .then((_) {
     runApp(
       ChangeNotifierProvider(
-          create: (context) => AvatarProvider(), child: App()),
+          create: (context) => AvatarProvider(), child: AppOLD()),
     );
   });
 }
 
-class App extends StatelessWidget {
-  const App({super.key});
+class AppOLD extends StatelessWidget {
+  const AppOLD({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => AppState(),
-        child: Consumer<AppState>(
+        create: (context) => AppStateOLD(),
+        child: Consumer<AppStateOLD>(
           builder: (context, appState, child) => Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -72,13 +113,13 @@ class App extends StatelessWidget {
   }
 }
 
-class AppState extends ChangeNotifier {
-  ThemeService themeService = ThemeService();
-  LanguageService languageService = LanguageService();
+class AppStateOLD extends ChangeNotifier {
+  ThemeController themeService = ThemeController();
+  LanguageController languageService = LanguageController();
 
-  AppState() {
-    themeService.addListener(updateTheme);
-    languageService.addListener(updateLanguage);
+  AppStateOLD() {
+    // themeService.addListener(updateTheme);
+    // languageService.addListener(updateLanguage);
   }
 
   void updateTheme() {
@@ -91,8 +132,8 @@ class AppState extends ChangeNotifier {
 
   @override
   void dispose() {
-    themeService.removeListener(updateTheme);
-    languageService.removeListener(updateLanguage);
+    // themeService.removeListener(updateTheme);
+    // languageService.removeListener(updateLanguage);
     super.dispose();
   }
 }

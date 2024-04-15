@@ -33,14 +33,14 @@ class MainPageState extends State<MainPage> {
 
   void refreshButtonsLabel() {
     setState(() {
-      classicGameButtonLabel = LanguageService().translate(
+      classicGameButtonLabel = LanguageController().translate(
           frenchString: 'Mode classique', englishString: 'Classic Mode');
-      limitedTimeGameButtonLabel = LanguageService().translate(
+      limitedTimeGameButtonLabel = LanguageController().translate(
           frenchString: 'Mode temps limité',
           englishString: 'Limited Time Mode');
-      storeButtonLabel = LanguageService()
+      storeButtonLabel = LanguageController()
           .translate(frenchString: 'Boutique', englishString: 'Store');
-      logoutButtonLabel = LanguageService()
+      logoutButtonLabel = LanguageController()
           .translate(frenchString: 'Déconnexion', englishString: 'Logout');
 
       buttons = [
@@ -102,14 +102,14 @@ class MainPageState extends State<MainPage> {
             appBar: AppBar(
               automaticallyImplyLeading:
                   false, // Remove back arrow from display
-              title: Text(LanguageService()
+              title: Text(LanguageController()
                   .translate(frenchString: 'Accueil', englishString: 'Home')),
               actions: <Widget>[
                 Row(
                   children: [
                     UserSettingsButton(refreshUserData, refreshButtonsLabel),
                     SizedBox(width: 10),
-                    Text(LanguageService().translate(
+                    Text(LanguageController().translate(
                             frenchString: 'Bonjour ', englishString: 'Hi ') +
                         User.username),
                     SizedBox(width: 10),

@@ -67,7 +67,7 @@ class _SoundsSectionState extends State<SoundsSection> {
       });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(LanguageService().translate(
+          content: Text(LanguageController().translate(
             englishString: 'Owned',
             frenchString: 'Acheté',
           )),
@@ -77,7 +77,7 @@ class _SoundsSectionState extends State<SoundsSection> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            LanguageService().translate(
+            LanguageController().translate(
                 englishString: 'Purchase error',
                 frenchString: 'Erreur d\'achat.'),
           ),
@@ -115,7 +115,7 @@ class _SoundsSectionState extends State<SoundsSection> {
               children: [
                 SizedBox(height: 20), // Add distance
                 Text(
-                  LanguageService().translate(
+                  LanguageController().translate(
                     englishString: 'Sounds',
                     frenchString: 'Sons',
                   ),
@@ -128,7 +128,7 @@ class _SoundsSectionState extends State<SoundsSection> {
                 SizedBox(height: 20), // Add distance
 
                 Text(
-                  LanguageService().translate(
+                  LanguageController().translate(
                     englishString:
                         'Improve your gaming experience with these exclusive sounds!',
                     frenchString:
@@ -171,7 +171,7 @@ class _SoundsSectionState extends State<SoundsSection> {
                             height: 8), // Espace entre l'image et le bouton
                         owned
                             ? Text(
-                                LanguageService().translate(
+                                LanguageController().translate(
                                     frenchString: 'Acheté',
                                     englishString: 'Owned'),
                                 style: TextStyle(color: Colors.green))

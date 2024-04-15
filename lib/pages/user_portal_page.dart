@@ -20,7 +20,7 @@ class UserSettingsPage extends StatefulWidget {
 }
 
 class UserSettingsPageState extends State<UserSettingsPage> {
-  ThemeService themeService = ThemeService();
+  ThemeController themeService = ThemeController();
 
   @override
   void initState() {
@@ -40,7 +40,7 @@ class UserSettingsPageState extends State<UserSettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(LanguageService().translate(
+        title: Text(LanguageController().translate(
             frenchString: 'Paramètres de compte',
             englishString: 'User settings')),
       ),
@@ -68,7 +68,7 @@ class UserSettingsPageState extends State<UserSettingsPage> {
                           headerBuilder:
                               (BuildContext context, bool isExpanded) {
                             return HeaderText(
-                              LanguageService().translate(
+                              LanguageController().translate(
                                   frenchString: 'Statistiques',
                                   englishString: 'Statistics'),
                             );
@@ -80,7 +80,7 @@ class UserSettingsPageState extends State<UserSettingsPage> {
                           headerBuilder:
                               (BuildContext context, bool isExpanded) {
                             return HeaderText(
-                              LanguageService().translate(
+                              LanguageController().translate(
                                   frenchString: 'Modifier le pseudonyme',
                                   englishString: 'Modify username'),
                             );
@@ -95,7 +95,7 @@ class UserSettingsPageState extends State<UserSettingsPage> {
                           headerBuilder:
                               (BuildContext context, bool isExpanded) {
                             return HeaderText(
-                              LanguageService().translate(
+                              LanguageController().translate(
                                   frenchString: "Modifier l'avatar",
                                   englishString: 'Modify avatar'),
                             );
@@ -107,7 +107,7 @@ class UserSettingsPageState extends State<UserSettingsPage> {
                           headerBuilder:
                               (BuildContext context, bool isExpanded) {
                             return HeaderText(
-                              LanguageService().translate(
+                              LanguageController().translate(
                                   frenchString: 'Historique de connexion',
                                   englishString: 'Connection history'),
                             );
@@ -122,7 +122,7 @@ class UserSettingsPageState extends State<UserSettingsPage> {
                             headerBuilder:
                                 (BuildContext context, bool isExpanded) {
                               return HeaderText(
-                                LanguageService().translate(
+                                LanguageController().translate(
                                     frenchString: 'Historique de parties',
                                     englishString: 'Game history'),
                               );
@@ -136,7 +136,7 @@ class UserSettingsPageState extends State<UserSettingsPage> {
                           headerBuilder:
                               (BuildContext context, bool isExpanded) {
                             return HeaderText(
-                              LanguageService().translate(
+                              LanguageController().translate(
                                   frenchString: 'Choix de sons spéciaux',
                                   englishString: 'Choose special sounds'),
                             );
@@ -154,7 +154,7 @@ class UserSettingsPageState extends State<UserSettingsPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          LanguageService().translate(
+                          LanguageController().translate(
                               frenchString: "Thème de l'application",
                               englishString: 'Application theme'),
                         ),
@@ -180,17 +180,17 @@ class UserSettingsPageState extends State<UserSettingsPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          LanguageService().translate(
+                          LanguageController().translate(
                               frenchString: "Langue de l'application",
                               englishString: 'Application language'),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[
-                            Icon(LanguageService().isLanguageFrench
+                            Icon(LanguageController().isLanguageFrench
                                 ? Icons.toggle_on
                                 : Icons.toggle_off),
-                            Text(LanguageService().isLanguageFrench
+                            Text(LanguageController().isLanguageFrench
                                 ? 'fr'
                                 : 'en'),
                           ],
@@ -199,8 +199,8 @@ class UserSettingsPageState extends State<UserSettingsPage> {
                     ),
                     onPressed: () {
                       setState(() {
-                        LanguageService().selectLanguage(
-                            !LanguageService().isLanguageFrench);
+                        LanguageController().selectLanguage(
+                            !LanguageController().isLanguageFrench);
                         widget.refreshButtonsLabel();
                       });
                     },

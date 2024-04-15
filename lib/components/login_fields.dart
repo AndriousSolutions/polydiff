@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:fluttery_framework/view.dart';
 import 'package:http/http.dart';
 import 'package:polydiff/components/custom_text_field.dart';
 import 'package:polydiff/pages/account_creation_page.dart';
@@ -28,20 +29,20 @@ class LoginFieldsState extends State<LoginFields> {
         children: [
           CustomTextField(
               controller: username,
-              labelText: LanguageService().translate(
+              labelText: LanguageController().translate(
                   frenchString: "Nom d'utilisateur :",
                   englishString: 'Username :'),
               obscureText: false),
           CustomTextField(
               controller: password,
-              labelText: LanguageService().translate(
+              labelText: LanguageController().translate(
                   frenchString: 'Mot de passe :', englishString: 'Password :'),
               obscureText: true),
           HomeButton(
             onPressed: () async {
               login(username.text, password.text);
             },
-            text: LanguageService()
+            text: LanguageController()
                 .translate(frenchString: 'Connexion', englishString: 'Login'),
           ),
           HomeButton(
@@ -51,7 +52,7 @@ class LoginFieldsState extends State<LoginFields> {
                 MaterialPageRoute(builder: (context) => AccountCreationPage()),
               );
             },
-            text: LanguageService().translate(
+            text: LanguageController().translate(
                 frenchString: 'Inscription', englishString: 'Sign up'),
           ),
           FutureBuilder<Map<String, String>>(
@@ -68,14 +69,14 @@ class LoginFieldsState extends State<LoginFields> {
                           openLastSession();
                         }
                       : null,
-                  text: LanguageService().translate(
+                  text: LanguageController().translate(
                       frenchString: 'Ouvrir la dernière session',
                       englishString: 'Open last session'),
                 );
               } else {
                 return HomeButton(
                   onPressed: null,
-                  text: LanguageService().translate(
+                  text: LanguageController().translate(
                     frenchString: 'Ouvrir la dernière session',
                     englishString: 'Open last session',
                   ),
@@ -103,16 +104,26 @@ class LoginFieldsState extends State<LoginFields> {
   }
 
   login(String username, String password) async {
-    final Response response = await LoginService.login(username, password);
-    if (response.statusCode == 200) {
-      print('Logged in');
-      await storage.write(key: 'username', value: username);
-      await storage.write(key: 'password', value: password);
-      toMainPage();
-    } else {
-      print('Credentials invalid');
-      String message = jsonDecode(response.body)['message'];
-      credentialsInvalidPopup(message);
+    Response? response;
+    try {
+      response = await LoginService.login(username, password);
+    } catch (e) {
+      if (context.mounted) {
+        //ignore: use_build_context_synchronously
+        showBox(context: context, text: 'Login was unsuccessful');
+      }
+    }
+    if (response != null) {
+      if (response.statusCode == 200) {
+        print('Logged in');
+        await storage.write(key: 'username', value: username);
+        await storage.write(key: 'password', value: password);
+        toMainPage();
+      } else {
+        print('Credentials invalid');
+        String message = jsonDecode(response.body)['message'];
+        credentialsInvalidPopup(message);
+      }
     }
   }
 

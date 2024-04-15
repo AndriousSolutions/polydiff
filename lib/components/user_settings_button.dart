@@ -20,7 +20,7 @@ class UserSettingsButton extends StatelessWidget {
               MaterialPageRoute(builder: (context) => FriendsPage()),
             );
           },
-          child: Text(LanguageService()
+          child: Text(LanguageController()
               .translate(frenchString: 'Amis', englishString: 'Friends')),
         ),
         SizedBox(width: 10),
@@ -33,7 +33,7 @@ class UserSettingsButton extends StatelessWidget {
                       UserSettingsPage(refreshUserData, refreshButtonsLabel)),
             );
           },
-          child: Text(LanguageService()
+          child: Text(LanguageController()
               .translate(frenchString: 'Réglages', englishString: 'Settings')),
         ),
       ],

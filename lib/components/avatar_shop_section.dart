@@ -108,7 +108,7 @@ class _AvatarsSectionState extends State<AvatarsSection> {
                 SizedBox(height: 20), // Add distance
 
                 Text(
-                  LanguageService().translate(
+                  LanguageController().translate(
                       frenchString:
                           'Achetez un avatar spécial pour personnaliser votre profil !',
                       englishString:
@@ -147,7 +147,7 @@ class _AvatarsSectionState extends State<AvatarsSection> {
                         SizedBox(height: 4),
                         owned
                             ? Text(
-                                LanguageService().translate(
+                                LanguageController().translate(
                                     frenchString: 'Acheté',
                                     englishString: 'Owned'),
                                 style: TextStyle(color: Colors.green))

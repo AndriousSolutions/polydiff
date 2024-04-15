@@ -51,13 +51,13 @@ class _ShopPageState extends State<ShopPage> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
-              LanguageService().translate(
+              LanguageController().translate(
                 frenchString: 'Solde insuffisant',
                 englishString: 'Insufficient balance',
               ),
             ),
             content: Text(
-              LanguageService().translate(
+              LanguageController().translate(
                 frenchString:
                     'Vous n\'avez pas assez de dinars pour ouvrir la roue. Jouez à des jeux pour gagner plus de dinars.',
                 englishString:
@@ -67,7 +67,7 @@ class _ShopPageState extends State<ShopPage> {
             actions: <Widget>[
               TextButton(
                 child: Text(
-                  LanguageService().translate(
+                  LanguageController().translate(
                     frenchString: 'Fermer',
                     englishString: 'Close',
                   ),
@@ -88,13 +88,13 @@ class _ShopPageState extends State<ShopPage> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
-              LanguageService().translate(
+              LanguageController().translate(
                 frenchString: 'Déjà possédé',
                 englishString: 'Already owned',
               ),
             ),
             content: Text(
-              LanguageService().translate(
+              LanguageController().translate(
                 frenchString:
                     'Vous avez déjà acheté un multiplicateur de points. Vous ne pouvez pas en acheter un autre.',
                 englishString:
@@ -104,7 +104,7 @@ class _ShopPageState extends State<ShopPage> {
             actions: <Widget>[
               TextButton(
                 child: Text(
-                  LanguageService().translate(
+                  LanguageController().translate(
                     frenchString: 'Fermer',
                     englishString: 'Close',
                   ),
@@ -135,7 +135,7 @@ class _ShopPageState extends State<ShopPage> {
           actions: <Widget>[
             TextButton(
               child: Text(
-                LanguageService().translate(
+                LanguageController().translate(
                   frenchString: 'Fermer',
                   englishString: 'Close',
                 ),
@@ -177,7 +177,7 @@ class _ShopPageState extends State<ShopPage> {
                 child: ElevatedButton(
                   onPressed: () => openWheelDialog(context),
                   child: Text(
-                    LanguageService().translate(
+                    LanguageController().translate(
                       frenchString:
                           'Faites tourner la roue de fortune contre 5 dinars',
                       englishString: 'Swing the fortune wheel for 5 dinars',
@@ -190,7 +190,7 @@ class _ShopPageState extends State<ShopPage> {
                 child: Row(
                   children: [
                     Text(
-                      LanguageService().translate(
+                      LanguageController().translate(
                         frenchString: 'Solde actuel: ',
                         englishString: 'Current balance: ',
                       ),

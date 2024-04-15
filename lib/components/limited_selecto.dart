@@ -110,7 +110,7 @@ class _LimitedSelectoState extends State<LimitedSelecto> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(LanguageService().translate(
+          title: Text(LanguageController().translate(
         frenchString: 'Partie temps limité',
         englishString: 'Limited time mode',
       ))),
@@ -135,7 +135,7 @@ class _LimitedSelectoState extends State<LimitedSelecto> {
                     .min, // Réduit la taille de la colonne à son contenu
                 children: <Widget>[
                   Text(
-                    LanguageService().translate(
+                    LanguageController().translate(
                         frenchString: 'Créer une partie',
                         englishString: 'Create a game'),
                     textAlign: TextAlign.start, // Alignement du texte
@@ -146,7 +146,7 @@ class _LimitedSelectoState extends State<LimitedSelecto> {
                         openConfigDialog(GameAccessType.ALL);
                       },
                       child: Text(
-                        LanguageService().translate(
+                        LanguageController().translate(
                             frenchString: 'Tous', englishString: 'All'),
                       ),
                     ),
@@ -156,7 +156,7 @@ class _LimitedSelectoState extends State<LimitedSelecto> {
                         openConfigDialog(GameAccessType.FRIENDS_ONLY);
                       },
                       child: Text(
-                        LanguageService().translate(
+                        LanguageController().translate(
                             frenchString: 'Amis', englishString: 'Friends'),
                       ),
                     ),
@@ -167,14 +167,14 @@ class _LimitedSelectoState extends State<LimitedSelecto> {
                             GameAccessType.FRIENDS_AND_THEIR_FRIENDS);
                       },
                       child: Text(
-                        LanguageService().translate(
+                        LanguageController().translate(
                             frenchString: 'Amis++', englishString: 'Friends++'),
                       ),
                     ),
                   ]),
                   SizedBox(height: 20),
                   Text(
-                    LanguageService().translate(
+                    LanguageController().translate(
                         frenchString: 'Rejoindre une partie',
                         englishString: 'Join a game'),
                     textAlign: TextAlign.start, // Alignement du texte
@@ -188,7 +188,7 @@ class _LimitedSelectoState extends State<LimitedSelecto> {
                       },
                     ),
                   ),
-                  Text(LanguageService().translate(
+                  Text(LanguageController().translate(
                       frenchString: 'Observer une partie',
                       englishString: 'Watch a game')),
                 ],

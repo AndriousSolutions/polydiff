@@ -54,7 +54,7 @@ class _MedalsSectionState extends State<MedalsSection> {
             return buildMedalsList(boughtItems);
           } else if (snapshot.hasError) {
             // Modifiez cette partie pour afficher plus de détails sur l'erreur
-            return Text(LanguageService().translate(
+            return Text(LanguageController().translate(
                     frenchString:
                         'Erreur lors du chargement des articles achetés',
                     englishString: 'Error loading bought items') +
@@ -94,7 +94,7 @@ class _MedalsSectionState extends State<MedalsSection> {
               children: [
                 SizedBox(height: 20), // Add distance
                 Text(
-                  LanguageService().translate(
+                  LanguageController().translate(
                       frenchString: 'Médailles', englishString: 'Medals'),
                   style: TextStyle(
                       fontSize: 20,
@@ -105,7 +105,7 @@ class _MedalsSectionState extends State<MedalsSection> {
                 SizedBox(height: 20), // Add distance
 
                 Text(
-                  LanguageService().translate(
+                  LanguageController().translate(
                       frenchString:
                           'Améliorez votre expérience de jeu avec ces médailles exclusives !',
                       englishString:
@@ -143,7 +143,7 @@ class _MedalsSectionState extends State<MedalsSection> {
                         SizedBox(height: 4),
                         owned
                             ? Text(
-                                LanguageService().translate(
+                                LanguageController().translate(
                                     frenchString: 'Acheté',
                                     englishString: 'Owned'),
                                 style: TextStyle(color: Colors.green))
@@ -193,14 +193,14 @@ class _MedalsSectionState extends State<MedalsSection> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
               content: Text(responseData['message'] ??
-                  LanguageService().translate(
+                  LanguageController().translate(
                       frenchString: 'Acheté', englishString: 'Owned'))),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(responseData['message'] ??
-                LanguageService().translate(
+                LanguageController().translate(
                     englishString: 'Purchase error',
                     frenchString: 'Erreur d\'achat.')),
           ),
@@ -209,7 +209,7 @@ class _MedalsSectionState extends State<MedalsSection> {
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(LanguageService().translate(
+          content: Text(LanguageController().translate(
               englishString:
                   'An error occurred while communicating with the server.',
               frenchString:

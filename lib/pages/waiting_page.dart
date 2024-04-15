@@ -133,21 +133,21 @@ class _WaitingPageWidgetState extends State<WaitingPageWidget> {
         automaticallyImplyLeading: false, // Remove back arrow from display
 
         title: Text(
-          LanguageService().translate(
+          LanguageController().translate(
               frenchString: 'Salle d\'attente', englishString: 'Waiting Room'),
         ),
         actions: [
           ElevatedButton(
             onPressed: cancelGameCreator,
             child: Text(
-              LanguageService()
+              LanguageController()
                   .translate(frenchString: 'Annuler', englishString: 'Leave'),
             ),
           ),
           ElevatedButton(
             onPressed: player2Name.isNotEmpty ? startGame : null,
             child: Text(
-              LanguageService()
+              LanguageController()
                   .translate(frenchString: 'Jouer', englishString: 'Play'),
             ),
           ),
@@ -172,22 +172,22 @@ class _WaitingPageWidgetState extends State<WaitingPageWidget> {
               SizedBox(height: 20),
               _buildPlayerTile(
                   player1Name,
-                  LanguageService().translate(
+                  LanguageController().translate(
                       frenchString: 'En attente d\'un premier joueur...',
                       englishString: 'Waiting for a first player...')),
               _buildPlayerTile(
                   player2Name,
-                  LanguageService().translate(
+                  LanguageController().translate(
                       frenchString: 'En attente d\'un deuxième joueur...',
                       englishString: 'Waiting for a second player...')),
               _buildPlayerTile(
                   player3Name,
-                  LanguageService().translate(
+                  LanguageController().translate(
                       frenchString: 'En attente d\'un troisième joueur...',
                       englishString: 'Waiting for a third player...')),
               _buildPlayerTile(
                   player4Name,
-                  LanguageService().translate(
+                  LanguageController().translate(
                       frenchString: 'En attente d\'un quatrième joueur...',
                       englishString: 'Waiting for a fourth player...')),
               SizedBox(height: 30),
@@ -207,7 +207,7 @@ class _WaitingPageWidgetState extends State<WaitingPageWidget> {
               children: [
                 Text(
                   playerName +
-                      LanguageService().translate(
+                      LanguageController().translate(
                           frenchString: ' a rejoint la partie',
                           englishString: ' has joined the game'),
                   style: TextStyle(fontSize: 18),

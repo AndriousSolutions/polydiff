@@ -40,7 +40,7 @@ class _WaintingPageLimiteState extends State<WaintingPageLimite> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(LanguageService().translate(
+          title: Text(LanguageController().translate(
             frenchString: 'Salle d\'attente',
             englishString: 'Waiting Room',
           )),
@@ -101,7 +101,7 @@ class _WaintingPageLimiteState extends State<WaintingPageLimite> {
               children: [
                 Text(
                   playerName +
-                      LanguageService().translate(
+                      LanguageController().translate(
                         frenchString: ' a rejoint la partie',
                         englishString: ' has joined the game',
                       ),
@@ -203,7 +203,7 @@ class _WaintingPageLimiteState extends State<WaintingPageLimite> {
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text(
-                LanguageService().translate(
+                LanguageController().translate(
                   frenchString: 'Partie annulée',
                   englishString: 'Game cancelled',
                 ),

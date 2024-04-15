@@ -20,26 +20,27 @@ class LoginService {
       }),
     );
     if (response.statusCode == 200) {
-      var body =  jsonDecode(response.body);
-      ThemeService().setTheme(body['isThemeDark']);
-      LanguageService().setLanguage(body['isLanguageFrench']);
+      var body = jsonDecode(response.body);
+      ThemeController().setTheme(body['isThemeDark']);
+      LanguageController().setLanguage(body['isLanguageFrench']);
       loadUserInfo(
-        username,
-        body['avatar'],
-        body['dinars'],
-        List<Map<String, dynamic >>.from(body['channelsAndMuted']),
-        body['id']
-        );
+          username,
+          body['avatar'],
+          body['dinars'],
+          List<Map<String, dynamic>>.from(body['channelsAndMuted']),
+          body['id']);
     }
     return response;
   }
 
-  static loadUserInfo(String username, String avatar, int dinars, List<Map<String, dynamic >> channelsAndMuted, String id) {
+  static loadUserInfo(String username, String avatar, int dinars,
+      List<Map<String, dynamic>> channelsAndMuted, String id) {
     User.username = username;
     User.id = id;
     User.setAvatar(avatar);
     User.dinarsAmount = dinars;
-    User.chatNameList = List<String>.from(channelsAndMuted.map((e) => e['channelName']));
+    User.chatNameList =
+        List<String>.from(channelsAndMuted.map((e) => e['channelName']));
     SocketService.socket.emit('attachSocketToActiveUser', username);
     SocketService.startConnectionPing();
     User.loadData();

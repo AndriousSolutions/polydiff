@@ -28,7 +28,7 @@ class PseudoModificationState extends State<PseudoModification> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
-        LanguageService().translate(
+        LanguageController().translate(
             frenchString: 'Le pseudonyme est déjà pris.',
             englishString: 'Username already taken'),
       )));
@@ -46,7 +46,7 @@ class PseudoModificationState extends State<PseudoModification> {
               child: TextFormField(
                 controller: pseudo,
                 decoration: InputDecoration(
-                    labelText: LanguageService().translate(
+                    labelText: LanguageController().translate(
                         frenchString: 'Entrez votre nouveau pseudonyme',
                         englishString: 'Enter your new username')),
                 validator: (value) {
@@ -58,7 +58,7 @@ class PseudoModificationState extends State<PseudoModification> {
                       value.isEmpty ||
                       value.length > 16 ||
                       !regex.hasMatch(value)) {
-                    return LanguageService().translate(
+                    return LanguageController().translate(
                         frenchString:
                             'Le pseudonyme doit contenir entre 1 et 16 lettres et/ou chiffres.',
                         englishString:
@@ -71,7 +71,7 @@ class PseudoModificationState extends State<PseudoModification> {
         ),
         ElevatedButton(
           child: Text(
-            LanguageService()
+            LanguageController()
                 .translate(frenchString: 'Confirmer', englishString: 'Confirm'),
           ),
           onPressed: () {

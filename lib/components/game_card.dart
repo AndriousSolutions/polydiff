@@ -358,7 +358,7 @@ class _GameCardState extends State<GameCard> {
                         children: [
                           // Affichage du nom du jeu
                           Text(
-                            LanguageService().translate(
+                            LanguageController().translate(
                                     frenchString: 'Fiche :',
                                     englishString: 'Card :') +
                                 ' ' +
@@ -377,7 +377,7 @@ class _GameCardState extends State<GameCard> {
                             ),
                           ),
                           Text(
-                            LanguageService().translate(
+                            LanguageController().translate(
                                   frenchString: 'Number de différences : ',
                                   englishString: 'Number of differences : ',
                                 ) +
@@ -401,7 +401,7 @@ class _GameCardState extends State<GameCard> {
               child: Column(
                 children: [
                   Text(
-                    LanguageService().translate(
+                    LanguageController().translate(
                         frenchString: 'Créer une partie : ',
                         englishString: 'Create a game : '),
                     textAlign: TextAlign.center,
@@ -412,7 +412,7 @@ class _GameCardState extends State<GameCard> {
                         onPressed: () {
                           createGameMulti(GameAccessType.ALL);
                         },
-                        child: Text(LanguageService().translate(
+                        child: Text(LanguageController().translate(
                             frenchString: 'Tous', englishString: 'All')),
                       ),
                     ),
@@ -421,7 +421,7 @@ class _GameCardState extends State<GameCard> {
                         onPressed: () {
                           createGameMulti(GameAccessType.FRIENDS_ONLY);
                         },
-                        child: Text(LanguageService().translate(
+                        child: Text(LanguageController().translate(
                             frenchString: 'Amis', englishString: 'Friends')),
                       ),
                     ),
@@ -431,7 +431,7 @@ class _GameCardState extends State<GameCard> {
                           createGameMulti(
                               GameAccessType.FRIENDS_AND_THEIR_FRIENDS);
                         },
-                        child: Text(LanguageService().translate(
+                        child: Text(LanguageController().translate(
                             frenchString: 'Amis++',
                             englishString: 'Friends++')),
                       ),
@@ -449,7 +449,7 @@ class _GameCardState extends State<GameCard> {
               child: Column(
                 children: [
                   Text(
-                    LanguageService().translate(
+                    LanguageController().translate(
                         frenchString: 'Joindre une partie : ',
                         englishString: 'Join a game : '),
                     textAlign: TextAlign.center,
@@ -478,7 +478,7 @@ class _GameCardState extends State<GameCard> {
               child: Column(
                 children: [
                   Text(
-                    LanguageService().translate(
+                    LanguageController().translate(
                         frenchString: 'Observer une partie en cours : ',
                         englishString: 'Watch a game in progress : '),
                     textAlign: TextAlign.center,

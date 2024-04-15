@@ -17,7 +17,7 @@ class UserStatisticsTable extends StatelessWidget {
             children: [
               TableRow(
                 children: [
-                  Text(LanguageService().translate(
+                  Text(LanguageController().translate(
                           frenchString: 'Nombre de parties jouées',
                           englishString: 'Number of played games') +
                       ' : '),
@@ -26,7 +26,7 @@ class UserStatisticsTable extends StatelessWidget {
               ),
               TableRow(
                 children: [
-                  Text(LanguageService().translate(
+                  Text(LanguageController().translate(
                           frenchString: 'Nombre de parties gagnées',
                           englishString: 'Number of won games') +
                       ' : '),
@@ -35,7 +35,7 @@ class UserStatisticsTable extends StatelessWidget {
               ),
               TableRow(
                 children: [
-                  Text(LanguageService().translate(
+                  Text(LanguageController().translate(
                           frenchString:
                               'Moyenne de différences trouvées par partie',
                           englishString: 'Average found differences per game') +
@@ -45,7 +45,7 @@ class UserStatisticsTable extends StatelessWidget {
               ),
               TableRow(
                 children: [
-                  Text(LanguageService().translate(
+                  Text(LanguageController().translate(
                           frenchString: 'Durée moyenne par partie (secondes)',
                           englishString: 'Average game duration (seconds)') +
                       ' : '),

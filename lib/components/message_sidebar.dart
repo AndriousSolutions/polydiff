@@ -33,7 +33,7 @@ class _MessageSideBarState extends State<MessageSideBar>
   final txtFieldFocusNode = FocusNode();
   late AudioPlayer player = AudioPlayer();
   final MESSAGE_SOUND = 'sounds/message.mp3';
-  final LanguageService languageService = LanguageService();
+  final LanguageController languageService = LanguageController();
   late ChatMuteService chatMuteService;
 
   void scrollDown() {

@@ -68,7 +68,7 @@ class SelectoPageWidgetState extends State<SelectoPageWidget> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          LanguageService().translate(
+          LanguageController().translate(
             frenchString: 'Partie classique',
             englishString: 'Classic mode',
           ),
