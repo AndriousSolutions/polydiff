@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttery_framework/view.dart';
@@ -13,6 +12,7 @@ import 'package:polydiff/services/language.dart';
 import 'package:polydiff/services/login.dart';
 
 class LoginFields extends StatefulWidget {
+  const LoginFields({super.key});
   @override
   LoginFieldsState createState() => LoginFieldsState();
 }
@@ -24,26 +24,27 @@ class LoginFieldsState extends State<LoginFields> {
 
   @override
   Widget build(BuildContext context) {
+    final lang = LanguageController();
     return SizedBox(
       child: Column(
         children: [
           CustomTextField(
               controller: username,
-              labelText: LanguageController().translate(
+              labelText: lang.translate(
                   frenchString: "Nom d'utilisateur :",
                   englishString: 'Username :'),
               obscureText: false),
           CustomTextField(
               controller: password,
-              labelText: LanguageController().translate(
+              labelText: lang.translate(
                   frenchString: 'Mot de passe :', englishString: 'Password :'),
               obscureText: true),
           HomeButton(
             onPressed: () async {
               login(username.text, password.text);
             },
-            text: LanguageController()
-                .translate(frenchString: 'Connexion', englishString: 'Login'),
+            text: lang.translate(
+                frenchString: 'Connexion', englishString: 'Login'),
           ),
           HomeButton(
             onPressed: () {
@@ -52,7 +53,7 @@ class LoginFieldsState extends State<LoginFields> {
                 MaterialPageRoute(builder: (context) => AccountCreationPage()),
               );
             },
-            text: LanguageController().translate(
+            text: lang.translate(
                 frenchString: 'Inscription', englishString: 'Sign up'),
           ),
           FutureBuilder<Map<String, String>>(
@@ -69,14 +70,14 @@ class LoginFieldsState extends State<LoginFields> {
                           openLastSession();
                         }
                       : null,
-                  text: LanguageController().translate(
+                  text: lang.translate(
                       frenchString: 'Ouvrir la dernière session',
                       englishString: 'Open last session'),
                 );
               } else {
                 return HomeButton(
                   onPressed: null,
-                  text: LanguageController().translate(
+                  text: lang.translate(
                     frenchString: 'Ouvrir la dernière session',
                     englishString: 'Open last session',
                   ),
@@ -107,10 +108,16 @@ class LoginFieldsState extends State<LoginFields> {
     Response? response;
     try {
       response = await LoginService.login(username, password);
-    } catch (e) {
+    } catch (e, stack) {
+      App.catchError(e, stack: stack, library: 'login_fields');
       if (context.mounted) {
-        //ignore: use_build_context_synchronously
-        showBox(context: context, text: 'Login was unsuccessful');
+        showBox(
+            //ignore: use_build_context_synchronously
+            context: context,
+            text: LanguageController().translate(
+              frenchString: 'Connexion échouée',
+              englishString: 'Login unsuccessful',
+            ));
       }
     }
     if (response != null) {

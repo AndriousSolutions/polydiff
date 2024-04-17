@@ -35,6 +35,10 @@ class AvatarImageFromServer {
 }
 
 class AvatarProvider with ChangeNotifier {
+  factory AvatarProvider() => _this ??= AvatarProvider._();
+  static AvatarProvider? _this;
+  AvatarProvider._();
+
   Map<String, Container> avatarCache = {};
 
   Container getAvatar(String avatarString) {

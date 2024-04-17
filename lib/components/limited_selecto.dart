@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:polydiff/pages/main_page.dart';
 import 'package:polydiff/components/game_constants.dart';
 import 'package:polydiff/components/message_sidebar.dart';
 import 'package:polydiff/components/select_lobby.dart';
@@ -76,6 +77,19 @@ class _LimitedSelectoState extends State<LimitedSelecto> {
         ),
       );
     });
+    systemUIMode();
+  }
+
+  @override
+  void activate() {
+    super.activate();
+    systemUIMode();
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    systemUIMode();
   }
 
   void _downloadCards() async {
@@ -227,7 +241,7 @@ class _LimitedSelectoState extends State<LimitedSelecto> {
           content: SizedBox(
             height: 100,
             child: Column(
-              children: [
+              children: const [
                 CircularProgressIndicator(),
                 Text('En attente du lancement de la partie...'),
               ],

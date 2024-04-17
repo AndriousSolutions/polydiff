@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:fluttery_framework/view.dart';
 import 'package:polydiff/components/login_fields.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,22 +7,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-
-    Row appTitleDisplay = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset(
-          'assets/images/logo1.png',
-          height: screenHeight * 0.2,
-        ),
-        SizedBox(width: 50),
-        Text(
-          appName,
-          style: TextStyle(fontSize: 64, color: Colors.white),
-        ),
-      ],
-    );
 
     Container loginFields = Container(
       decoration: BoxDecoration(
@@ -30,7 +14,7 @@ class HomePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       padding: EdgeInsets.all(20),
-      child: LoginFields(),
+      child: const LoginFields(),
     );
 
     return PopScope(
@@ -52,5 +36,36 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget get appTitleDisplay {
+    final smallScreen = App.inSmallScreen;
+    final children = [
+      Flexible(
+        child: Image.asset(
+          'assets/images/logo1.png',
+          height: 20.h,
+        ),
+      ),
+//        SizedBox(width: 50),
+      Flexible(
+        child: Text(
+          appName,
+          style:
+              TextStyle(fontSize: smallScreen ? 28 : 64, color: Colors.white),
+        ),
+      ),
+    ];
+
+    return smallScreen
+        ? Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: children,
+          )
+        : Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: children,
+          );
   }
 }

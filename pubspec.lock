@@ -355,7 +355,7 @@ packages:
       path: "../../packages/fluttery_framework"
       relative: true
     source: path
-    version: "4.18.2+1"
+    version: "4.19.0"
   go_router:
     dependency: transitive
     description:
@@ -773,10 +773,10 @@ packages:
     dependency: transitive
     description:
       name: state_extended
-      sha256: "18719270ed36d55ce6afbf4602764b21efdd8ece887e8770892f4cb0b0c405d8"
+      sha256: c9783f446d0d415846e30fdc2433b8c149155757c7a9417e50f5304fc439a21a
       url: "https://pub.dev"
     source: hosted
-    version: "4.12.0"
+    version: "4.13.0"
   stream_channel:
     dependency: transitive
     description:

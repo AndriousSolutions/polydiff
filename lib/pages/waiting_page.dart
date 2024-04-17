@@ -120,10 +120,11 @@ class _WaitingPageWidgetState extends State<WaitingPageWidget> {
 
   void cancelGameCreator() {
     SocketService.socket.emit('leaveLobbyCreator', gameName);
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => SelectoPageWidget()),
-    );
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => SelectoPageWidget()),
+    // );
+    Navigator.pop(context);
   }
 
   @override
@@ -131,7 +132,6 @@ class _WaitingPageWidgetState extends State<WaitingPageWidget> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false, // Remove back arrow from display
-
         title: Text(
           LanguageController().translate(
               frenchString: 'Salle d\'attente', englishString: 'Waiting Room'),
@@ -163,34 +163,44 @@ class _WaitingPageWidgetState extends State<WaitingPageWidget> {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+//            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Text(
-                gameName.isNotEmpty ? gameName : 'Loading game...',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              Flexible(
+                child: Text(
+                  gameName.isNotEmpty ? gameName : 'Loading game...',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
               ),
-              SizedBox(height: 20),
-              _buildPlayerTile(
-                  player1Name,
-                  LanguageController().translate(
-                      frenchString: 'En attente d\'un premier joueur...',
-                      englishString: 'Waiting for a first player...')),
-              _buildPlayerTile(
-                  player2Name,
-                  LanguageController().translate(
-                      frenchString: 'En attente d\'un deuxième joueur...',
-                      englishString: 'Waiting for a second player...')),
-              _buildPlayerTile(
-                  player3Name,
-                  LanguageController().translate(
-                      frenchString: 'En attente d\'un troisième joueur...',
-                      englishString: 'Waiting for a third player...')),
-              _buildPlayerTile(
-                  player4Name,
-                  LanguageController().translate(
-                      frenchString: 'En attente d\'un quatrième joueur...',
-                      englishString: 'Waiting for a fourth player...')),
-              SizedBox(height: 30),
+//              SizedBox(height: 20),
+              Flexible(
+                child: _buildPlayerTile(
+                    player1Name,
+                    LanguageController().translate(
+                        frenchString: 'En attente d\'un premier joueur...',
+                        englishString: 'Waiting for a first player...')),
+              ),
+              Flexible(
+                child: _buildPlayerTile(
+                    player2Name,
+                    LanguageController().translate(
+                        frenchString: 'En attente d\'un deuxième joueur...',
+                        englishString: 'Waiting for a second player...')),
+              ),
+              Flexible(
+                child: _buildPlayerTile(
+                    player3Name,
+                    LanguageController().translate(
+                        frenchString: 'En attente d\'un troisième joueur...',
+                        englishString: 'Waiting for a third player...')),
+              ),
+              Flexible(
+                child: _buildPlayerTile(
+                    player4Name,
+                    LanguageController().translate(
+                        frenchString: 'En attente d\'un quatrième joueur...',
+                        englishString: 'Waiting for a fourth player...')),
+              ),
+//              SizedBox(height: 30),
             ],
           ),
         ),

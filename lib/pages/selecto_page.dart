@@ -26,6 +26,19 @@ class SelectoPageWidgetState extends State<SelectoPageWidget> {
   void initState() {
     super.initState();
     _downloadCards();
+    systemUIMode();
+  }
+
+  @override
+  void activate() {
+    super.activate();
+    systemUIMode();
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    systemUIMode();
   }
 
   void _downloadCards() async {
@@ -77,10 +90,11 @@ class SelectoPageWidgetState extends State<SelectoPageWidget> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MainPage()),
-            );
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => MainPage()),
+            // );
+            Navigator.pop(context);
           },
         ),
         actions: [
