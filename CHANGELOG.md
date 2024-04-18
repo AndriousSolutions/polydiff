@@ -1,4 +1,9 @@
 
+## 0.0.6
+April 18, 2024
+- Install a LICENSE file
+- Uses 'dev' server unless 'prod' is specified or in production.
+
 ## 0.0.5
 April 17, 2024
 - Assigned app icon
